@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Pacman Online</title>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#FFD700">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => {
+                console.log("SW registrado", reg);
+            })
+            .catch(err => {
+                console.log("Error SW", err);
+            });
+    });
+}
+</script>
 <body>
 
     <h1>Pacman Online</h1>

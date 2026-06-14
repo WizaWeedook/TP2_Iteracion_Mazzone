@@ -1,0 +1,51 @@
+{
+  "id": "/",
+  "name": "Pacman Online",
+  "short_name": "Pacman",
+  "description": "Juego Pacman desarrollado con HTML5",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#111111",
+  "theme_color": "#FFD700",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["games", "entertainment"],
+  "prefer_related_applications": false,
+  "display_override": ["standalone"],
+  "screenshots": [
+    {
+      "src": "screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-50.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-62.png",
+      "sizes": "62x62",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-75.png",
+      "sizes": "75x75",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-100.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-200.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ]
+}
