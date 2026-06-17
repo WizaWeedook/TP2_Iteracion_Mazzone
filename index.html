@@ -24,6 +24,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 </script>
+
 <body>
 
     <h1>Pacman Online</h1>
@@ -42,7 +43,21 @@ if ('serviceWorker' in navigator) {
         </div>
 
     </div>
+    
+    </select>
+    <button id="gyroBtn">
+    Activar Giroscopio
+    </button>
+    
+    <select id="controlMode">
+    <option value="keyboard">
+        Teclado
+    </option>
 
+    <option value="gyro">
+        Giroscopio
+    </option>
+    
     <div id="info">
         <p>Jugador: <span id="playerName"></span></p>
         <p>Puntaje: <span id="score">0</span></p>

@@ -38,6 +38,8 @@ socket.onclose = () => {
     console.log("Desconectado");
 };
 
+
+
 socket.onmessage = (event) => {
 
     try {
@@ -204,4 +206,115 @@ function draw(){
     requestAnimationFrame(draw);
 }
 
+function iniciarGiroscopio(){
+
+    window.addEventListener(
+        "deviceorientation",
+        manejarOrientacion
+    );
+
+}
+
 draw();
+
+function manejarOrientacion(event){
+
+    const gamma = event.gamma;
+
+    if(gamma > 15){
+
+        player.x += player.speed;
+
+    }
+    else if(gamma < -15){
+
+        player.x -= player.speed;
+
+    }
+
+}
+function manejarOrientacion(event){
+
+    const beta = event.beta;
+    const gamma = event.gamma;
+
+    if(gamma > 15){
+
+        player.x += player.speed;
+
+    }
+    else if(gamma < -15){
+
+        player.x -= player.speed;
+
+    }
+
+    if(beta > 15){
+
+        player.y += player.speed;
+
+    }
+    else if(beta < -15){
+
+        player.y -= player.speed;
+
+    }
+
+    verificarMoneda();
+
+}
+
+player.x =
+    Math.max(
+        player.size,
+        Math.min(
+            canvas.width-player.size,
+            player.x
+        )
+    );
+
+player.y =
+    Math.max(
+        player.size,
+        Math.min(
+            canvas.height-player.size,
+            player.y
+        )
+    );
+
+document
+.getElementById("gyroBtn")
+.addEventListener(
+    "click",
+    activarGiroscopio
+);
+
+function activarGiroscopio(){
+
+    if(
+        typeof DeviceOrientationEvent
+            .requestPermission === "function"
+    ){
+
+        DeviceOrientationEvent
+            .requestPermission()
+            .then(permissionState=>{
+
+                if(
+                    permissionState==="granted"
+                ){
+
+                    iniciarGiroscopio();
+
+                }
+
+            });
+
+    }
+    else{
+
+        iniciarGiroscopio();
+
+    }
+
+}
