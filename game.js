@@ -22,6 +22,25 @@ const coin = {
     radius: 10
 };
 
+function limitarJugador(){
+
+    player.x = Math.max(
+        player.size,
+        Math.min(
+            canvas.width - player.size,
+            player.x
+        )
+    );
+
+    player.y = Math.max(
+        player.size,
+        Math.min(
+            canvas.height - player.size,
+            player.y
+        )
+    );
+}
+
 const socket = new WebSocket(
     "wss://gamehubmanager.azurewebsites.net/ws"
 );
@@ -120,6 +139,8 @@ document.addEventListener(
                 break;
         }
 
+            limitarJugador();
+
         enviarEvento(
             "posicion",
             player.x
@@ -167,6 +188,8 @@ function verificarMoneda(){
 }
 
 function draw(){
+
+    limitarJugador();
 
     ctx.clearRect(
         0,
@@ -219,22 +242,6 @@ draw();
 
 function manejarOrientacion(event){
 
-    const gamma = event.gamma;
-
-    if(gamma > 15){
-
-        player.x += player.speed;
-
-    }
-    else if(gamma < -15){
-
-        player.x -= player.speed;
-
-    }
-
-}
-function manejarOrientacion(event){
-
     const beta = event.beta;
     const gamma = event.gamma;
 
@@ -260,27 +267,11 @@ function manejarOrientacion(event){
 
     }
 
+    limitarJugador();
+
     verificarMoneda();
 
 }
-
-player.x =
-    Math.max(
-        player.size,
-        Math.min(
-            canvas.width-player.size,
-            player.x
-        )
-    );
-
-player.y =
-    Math.max(
-        player.size,
-        Math.min(
-            canvas.height-player.size,
-            player.y
-        )
-    );
 
 document
 .getElementById("gyroBtn")

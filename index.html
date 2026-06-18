@@ -11,20 +11,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
-            .then(reg => {
-                console.log("SW registrado", reg);
-            })
-            .catch(err => {
-                console.log("Error SW", err);
-            });
-    });
-}
-</script>
-
 <body>
 
     <h1>Pacman Online</h1>
@@ -43,12 +29,11 @@ if ('serviceWorker' in navigator) {
         </div>
 
     </div>
-    
-    </select>
+
     <button id="gyroBtn">
     Activar Giroscopio
     </button>
-    
+
     <select id="controlMode">
     <option value="keyboard">
         Teclado
@@ -64,6 +49,19 @@ if ('serviceWorker' in navigator) {
     </div>
 
     <script src="game.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => {
+                    console.log("SW registrado", reg);
+                })
+                .catch(err => {
+                    console.log("Error SW", err);
+                });
+        });
+    }
+    </script>
 
 </body>
 </html>
